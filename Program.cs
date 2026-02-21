@@ -25,7 +25,7 @@ namespace DapperWithOOP
                         case 1:
                             Console.Write("IDni kiriting: ");
                             int productId = Convert.ToInt32(Console.ReadLine());
-                            _=Products.GetById(productId);
+                            await Products.GetById(productId);
                             break;
                         case 2:
                             _=Products.GetAll();
