@@ -25,7 +25,7 @@ namespace DapperWithOOP
                         case 1:
                             Console.Write("IDni kiriting: ");
                             int productId = Convert.ToInt32(Console.ReadLine());
-                            _=Products.GetById(productId);
+                            await Products.GetById(productId);
                             break;
                         case 2:
                             _=Products.GetAll();
@@ -34,7 +34,7 @@ namespace DapperWithOOP
                             Console.WriteLine("Name ning biror qismini kiriting ");
                             Console.Write(">>> ");
                             string name = Console.ReadLine();
-                            _ = Products.SearchByName(name);
+                            await Products.SearchByName(name);
                             break;
 
                     }

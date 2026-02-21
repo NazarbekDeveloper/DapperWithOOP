@@ -13,32 +13,40 @@ namespace DapperWithOOP
     {
         public static async Task GetById(int productId)
         {
-            string? connectionString =
+            try
+            {
+                string? connectionString =
                                       "Server=BEKZALATOY\\MSSQLSERVER01;" +
                                       "Database=NorthWindDb;" +
                                       "Integrated Security=True;" +
                                       "TrustServerCertificate=True;";
-            IDbConnection ulanish = new SqlConnection(connectionString);
+                IDbConnection ulanish = new SqlConnection(connectionString);
 
-            string sqlQuery =
-                """
+                string sqlQuery =
+                    """
                 select * from Products
                 where ProductID = @productId;
                 """;
 
-            Product? product = await ulanish.QueryFirstOrDefaultAsync<Product>(sqlQuery, new { productId });
+                Product? product = await ulanish.QueryFirstOrDefaultAsync<Product>(sqlQuery, new { productId });
 
-            Console.WriteLine($"ProductId: {product.ProductId} ");
-            Console.WriteLine($"ReorderLevel: {product.ReorderLevel}");
-            Console.WriteLine($"Discontinued: {product.Discontinued}");
-            Console.WriteLine($"ProductName: {product.ProductName} ");
-            Console.WriteLine($"SupplierId: {product.SupplierId}");
-            Console.WriteLine($"CategoryId: {product.CategoryId}");
-            Console.WriteLine($"QuantityPerUnit: {product.QuantityPerUnit}");
-            Console.WriteLine($"UnitPrice: {product.UnitPrice}");
-            Console.WriteLine($"UnitsInStock: {product.UnitsInStock}");
-            Console.WriteLine($"UnitsOnOrder: {product.UnitsOnOrder}");
-            Console.WriteLine();
+                Console.WriteLine($"ProductId: {product.ProductId} ");
+                Console.WriteLine($"ReorderLevel: {product.ReorderLevel}");
+                Console.WriteLine($"Discontinued: {product.Discontinued}");
+                Console.WriteLine($"ProductName: {product.ProductName} ");
+                Console.WriteLine($"SupplierId: {product.SupplierId}");
+                Console.WriteLine($"CategoryId: {product.CategoryId}");
+                Console.WriteLine($"QuantityPerUnit: {product.QuantityPerUnit}");
+                Console.WriteLine($"UnitPrice: {product.UnitPrice}");
+                Console.WriteLine($"UnitsInStock: {product.UnitsInStock}");
+                Console.WriteLine($"UnitsOnOrder: {product.UnitsOnOrder}");
+                Console.WriteLine();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Xatolik yuz berdi: {ex.Message}");
+            }
+
         }
         public static async Task GetAll()
         {
