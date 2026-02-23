@@ -28,7 +28,7 @@ namespace DapperWithOOP
                             await Products.GetById(productId);
                             break;
                         case 2:
-                            _=Products.GetAll();
+                            await Products.GetAll();
                             break;
                         case 3:
                             Console.WriteLine("Name ning biror qismini kiriting ");
